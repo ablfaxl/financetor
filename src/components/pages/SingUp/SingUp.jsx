@@ -80,7 +80,6 @@ function SingUp() {
             "password": password,
           },
           });
-          // console.log(newUser.data.singup);
           cookies.set('token',newUser.data.signup.token);
           {
             handleClick("success", "Your registration was successful")
@@ -322,4 +321,3 @@ function SingUp() {
 }
 
 export default SingUp;
-// az use hook form estefade

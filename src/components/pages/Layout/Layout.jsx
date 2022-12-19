@@ -7,7 +7,6 @@ import Cookies from "universal-cookie";
 //style
 import { BoxContainer, BoxLayout, LayoutDivider, ModalBox, ModalInput, ProfileStack } from "./LayoutStyle";
 import { IconBox } from "./LayoutStyle";
-//icno
 import { FaGoogleWallet } from "react-icons/fa";
 import HomeIcon from "@mui/icons-material/Home";
 import { BiTagAlt } from "react-icons/bi";
@@ -78,9 +77,6 @@ function Layout() {
   const handleOpenMenu = () => setOpenMenu(true);
   const handleCloseMenu = () => setOpenMenu(false);
   //Menu
-  //Drawer
-
-  //Drawer
 
 
   // console.log('token in layout',token)
@@ -105,11 +101,6 @@ function Layout() {
             },
         
         });
-        // console.log(edit);
-        // {
-          // handleClick("success", "Your registration was successful")
-          // console.log('data', edit.data)
-        // }
       } catch (error) {
         console.log(error); 
       }
@@ -146,8 +137,6 @@ function Layout() {
             display:{lg: 'flex', md:'none', sm:'none', xs:'none'},
             justifyContent: "center",
             flexDirection: "column",
-
-            // gap: "190px",
           }}
         >
           <LayoutDivider sx={{ bgcolor: "#7B7B7B", width: "10rem" }} />
@@ -197,7 +186,6 @@ function Layout() {
           <Button onClick={handleOpenModal} >
           <Avatar  src={`http://localhost:80/${data.me.img}`} sx={{ height: "40px", width: "40px",marginLeft:"10px" }} />
           <Typography align="center" p={1}>
-            {/* {data.me.name} */}
             {defaultName}
           </Typography>
           </Button>
@@ -224,7 +212,6 @@ function Layout() {
           {" "}
           <ModalInput
           type={"file"} 
-          // value={img}
            onChange={(e)=>setImg(e.target.files[0])} />
           
           <Button sx={{width:'80px',height:'50px'}} color="primary" variant="contained" onClick={editProfile}>confirm</Button>
@@ -256,5 +243,3 @@ function Layout() {
 }
 
 export default Layout;
-// chgone bayad item haro b chap bzaram?
-// chjori size sho ro halat mobile hrof bzorg she?

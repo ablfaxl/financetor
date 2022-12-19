@@ -1,8 +1,8 @@
 import { Box, Button, Modal, Paper, Table, TableBody, TableContainer, TableHead, TableRow, TextField, Typography } from "@mui/material";
-import { Stack } from "@mui/system";
 import React, { useState } from "react";
 import { gql, useMutation, useQuery } from "@apollo/client";
 // style
+import { Stack } from "@mui/system";
 import { EditInput, RightBox, StyledTableCell, StyledTableRow, StyledTextField, TagBox, deleteModal } from "./TagStyle";
 import { LeftBox } from "./TagStyle";
 import AlertModal from "../../pages/Alert";
@@ -257,14 +257,12 @@ const CustomModal = ({ _id, cta, closeModal }) => {
         </TableHead>
         <TableBody>
           {data.getMyTags.map((item, i) => {
-            // console.log(item.color)
             return(
 
               <>
               <StyledTableRow key={i}>
               <StyledTableCell
               onClick={()=>{setOpenModal(true); setId(item._id); setEditName(item.name);setEditColor(item.color) }}
-              //  onClick={()=>{handleOpenModal; setId(item.id)}} 
                component="th" scope="row" sx={{color:"white", cursor:"pointer"}}>
               <EditIcon/>
               
@@ -272,9 +270,7 @@ const CustomModal = ({ _id, cta, closeModal }) => {
               <StyledTableCell sx={{color:"white"}} align="right">{item.name}</StyledTableCell>
               <StyledTableCell sx={{color:"white"}} align="right">
                 <TextField sx={{width:"60pX", height:"60px"}}  value={item.color} type={"color"} />
-                {/* {item.color} */}
                 </StyledTableCell>
-              {/* <StyledTableCell sx={{color:"white"}} align="right">{item.expenseCount}</StyledTableCell> */}
               <StyledTableCell 
               onClick={() => {setIsOpen(true); setDelete_id(item._id)}}
               sx={{color:"white"}} align="right">

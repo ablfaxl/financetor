@@ -31,7 +31,6 @@ export const TagBox = styled(Box)(
   );
 
 
-  // top: calc(60% - 70%);
   export const LeftBox = styled(Box)(
     ({ theme: { breakpoints } }) => `
     background-color: #212121 ;
@@ -96,7 +95,6 @@ export const TagBox = styled(Box)(
     TextField,  
     // OutlinedInput
   )({
-    // width:"80%",
     "& label.Mui-focused": {
       color: "black",
     },

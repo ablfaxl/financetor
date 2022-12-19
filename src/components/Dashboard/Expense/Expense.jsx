@@ -332,11 +332,6 @@ function Expense() {
                           {item.tag.name}
                         </span>
                       </Typography>
-                      {/* <Typography align='left'>
-      <span style={{color:"#323232"}}>
-        {item.date}
-      </span>
-      </Typography>        */}
                     </CardContent>
                     <CardActions disableSpacing>
                       <IconButton
@@ -412,8 +407,7 @@ function Expense() {
               <Box sx={{ width: "300px", height: "200px",paddingLeft:4 }}>
                 <MapContainer
                   ref={editmapRef}
-                  // center={[editlat, editlon]}
-                  center={["35.8073145", "51.8353402"]}
+                  center={[item.lat, item.lon]}
                   zoom={16}
                   scrollWheelZoom={true}
                   style={{ width: "100%", height: "100%" }}

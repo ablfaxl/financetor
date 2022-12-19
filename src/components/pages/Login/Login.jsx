@@ -73,8 +73,6 @@ const LoginUser = async () => {
       },
     });
    
-   // این شرط هست توکن نمی سازه جرا؟
-    // if(!loginUser.data.login.token)
     cookies.set('token',loginUser.data.login.token);
     {
       handleClick("success", "Your Login was successful")

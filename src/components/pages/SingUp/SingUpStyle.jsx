@@ -10,7 +10,6 @@ import {
   Stack,
   Divider,
 } from "@mui/material";
-//  margin-left: 1150px;
 export const StyledContainer = styled(Container)(
   ({ theme: { breakpoints } }) => `
   display:flex;
@@ -117,7 +116,6 @@ export const StyledBox = styled(Box)(
     
     `
   );
-//   width: 100%;
   export const InputBox = styled(Box)(
     ({ theme: { breakpoints } }) => `
     padding-top: 30px;
