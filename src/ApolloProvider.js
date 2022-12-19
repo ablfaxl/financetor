@@ -1,0 +1,71 @@
+import React, { useMemo, useRef } from "react";
+// import { useSelector } from "react-redux";
+import { createUploadLink } from "apollo-upload-client";
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  ApolloLink,
+} from "@apollo/client";
+import { onError } from "@apollo/client/link/error";
+import { setContext } from "@apollo/client/link/context";
+import Cookies from "universal-cookie";
+
+const graphqlEndpoint = `http://localhost:80/graphql`;
+const cookies = new Cookies();
+
+
+// The name here doesn't really matter.
+export default function CustomApolloProvider(props) {
+  const token = cookies.get("token");
+  const auth = token ? `ut ${token}` : null;
+  //   const userToken = useSelector((state) => state.data.userToken);
+
+  const tokenRef = useRef();
+
+  // Whenever the token changes, the component re-renders, thus updating the ref.
+  //   tokenRef.current = userToken;
+
+  // Ensure that the client is only created once.
+  const client = useMemo(
+    () => {
+      const authLink = setContext((_, { headers }) => ({
+        headers: {
+          ...headers,
+          auth: auth,
+          // auth: tokenRef.current ? `ut ${tokenRef.current}` : null,
+        },
+      }));
+
+      const errorLink = onError(
+        ({ graphQLErrors, networkError, operation }) => {
+          if (graphQLErrors) {
+            graphQLErrors.forEach(({ message, location, path }) => {
+              console.log(`message:${message} location:${location}`);
+            });
+          }
+
+          if (networkError) {
+            console.log(`networkerror: ${networkError}`);
+          }
+        }
+      );
+
+      const httpLink = createUploadLink({
+        uri: graphqlEndpoint,
+      });
+
+      const link = ApolloLink.from([errorLink, authLink, httpLink]);
+
+      return new ApolloClient({
+        link,
+        cache: new InMemoryCache(),
+      });
+    },
+    [
+      // userToken
+    ]
+  );
+
+  return <ApolloProvider client={client} {...props} />;
+}
